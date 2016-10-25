@@ -1,0 +1,121 @@
+
+.signup{
+	background: url(../img/signup-bg.jpg) no-repeat 0 0;
+	background-size: cover;
+	color: #fff;
+	padding: 150px 15px;
+	text-align: center;
+	p{
+		font-size:2.5em;
+		font-weight: @p-bold;
+		margin: 0;
+	}
+}
+
+footer{
+	background-color: #242424;
+    padding: 80px 15px;
+    .connect{
+	    h4{
+	    	color: #fff;
+	    	text-transform: uppercase;
+	    	font-size: 1.5em;
+	    	font-weight: @p-semi-bold;
+	    	margin-bottom: 20px;
+	    	letter-spacing: .5px;
+	    }
+	    h5{
+	    	color: #fff;
+	    	text-transform: uppercase;
+	    	font-size: 1em;
+	    	font-weight: @p-semi-bold;
+	    	margin-bottom: 20px;
+	    	letter-spacing: .5px;
+	    }
+		.social{
+			padding: 0;
+			a {
+			    font-size: 27px;
+			    color: #fff;
+			    opacity: 1;
+			    text-decoration: none;
+			    transition:.3s all ease;
+			    margin:0 2px;
+			    &:hover, &:focus{
+			    	opacity: .5;
+			    }
+		   	}
+		}
+	}
+	.menu{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		> li{
+			> a{
+			    color: #fff;
+			    text-transform: uppercase;
+			    font-weight: 600;
+			    font-size: .8em;
+			    text-decoration: none;
+			    padding: 0 0 10px;
+			    display: block;
+			}
+			.sub-menu{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				a{
+					color: #f7f6f1;
+					text-transform: none;
+					font-weight: @p-light;
+					font-size: .75em;
+					text-decoration: none;
+				}
+			}
+		}	
+	}
+	#menu-footer-products{
+		-webkit-columns: 150px 2;
+		   -moz-columns: 150px 2;
+			    columns: 150px 2;
+		.sub-menu{
+			li{
+				
+			}
+		}
+	}
+	.copyright{
+		margin-top: 30px;
+		text-align: center;
+		color: #e6e7e3;
+		font-weight: @p-light;
+		font-size: .9em;
+	}
+
+	@media @mq-md {}
+	@media @mq-sm {
+		text-align: center;
+		#menu-footer-products{
+			-webkit-columns: 1;
+			   -moz-columns: 1;
+				    columns: 1;
+		    margin-bottom: 30px;
+		}
+		#menu-footer-resources, #menu-footer{
+			margin-bottom: 30px;
+		}
+		.connect{
+			text-align: center;
+		}
+		.menu > li > a{
+			font-size: 1em;
+		}
+		.menu > li .sub-menu a {
+		    font-size: 1em;
+		    line-height: 1.75em;
+		}
+	}
+	@media @mq-xs {}
+
+}
