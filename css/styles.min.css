@@ -1106,6 +1106,9 @@ body[class*='page-template-page-sub-page'] .hero .container p {
 /*
  * Contact Page
  */
+.contact-page-content iframe { 
+    width: 100% !important;
+}
 .secondary-page-content {
     background-color: #f9f8f8;
     padding-bottom: 60px;
@@ -2213,6 +2216,9 @@ footer .copyright {
     .site-header img {
         display: inline;
     }
+    .contact-page-content iframe {
+        height: 225px;
+    }
     
 }
 @media screen and ( max-width: 767px ) {   
@@ -2233,7 +2239,6 @@ footer .copyright {
     .p-nbsp {
         display: none;
     }
-    
 }
 @media screen and ( min-width: 567px ) and ( max-width: 767px ) {
     .products-container {
@@ -2249,6 +2254,10 @@ footer .copyright {
     .blog-archive-container:hover .products-background {
         padding: 220px 10% 5%;
     }
+    .contact-page-content iframe {
+        height: 250px;
+    }
+    
 }
 @media screen and ( min-width: 567px ) and ( max-width: 991px ) {
   .site-header {
@@ -2269,6 +2278,17 @@ footer .copyright {
     .page-template-page-sub-page-1 .hero .nav-boxes .wrap:hover {
         background-size: 25%;
         padding: 28% 5% 5%;
+    }
+}
+@media screen and ( min-width: 768px ) {
+    .page-id-532 .contact-page-content .body-full-width-content {
+        padding: 60px 60px 0 60px;
+    }
+    .body-full-width-content.international-rep-finder {
+        padding: 0px 60px 60px 60px !important;
+    }
+    .contact-page-content iframe {
+        height: 200px;
     }
 }
 @media screen and ( min-width: 768px ) and ( max-width: 991px ) {

@@ -61,7 +61,9 @@
                             // Find Account Manager Page Unique Content
                             if( get_field('rep_finder') ):
                                 $iframe = get_field('rep_finder');
-                                echo '<div class="body-full-width-content"><iframe src="'. $iframe .'" width="1200" height="250" frameBorder="0" style="width:100% !important;">iFrames are not supported by your browser.</iframe></div>';
+								$intl_rep_finder = get_field('intl_rep_finder');
+                                echo '<div class="body-full-width-content"><iframe src="'. $iframe .'" width="1200" height="250" frameBorder="0" >iFrames are not supported by your browser.</iframe></div>';
+								echo '<div class="body-full-width-content international-rep-finder">'. $intl_rep_finder .'</div>';
                             endif; 
                         
                             // Customer Service Page Unique Content
