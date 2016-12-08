@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package paradigm
+ * @package jist
  */
 
 $blog_id = get_option( 'page_for_posts' );

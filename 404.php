@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package paradigm
+ * @package jist
  */
 
 $blog_id = get_option( 'page_for_posts' );

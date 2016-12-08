@@ -2,7 +2,7 @@
 /**
  * jist Theme Customizer.
  *
- * @package paradigm
+ * @package jist
  */
 
 /**

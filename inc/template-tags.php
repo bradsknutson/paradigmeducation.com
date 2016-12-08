@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package paradigm
+ * @package jist
  */
 
 if ( ! function_exists( 'jist_posted_on' ) ) :
