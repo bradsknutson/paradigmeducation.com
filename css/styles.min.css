@@ -1256,6 +1256,17 @@ textarea {
     padding: 10px 15px;
     font-size: 0.75em;
 }
+.field-wrap select {
+    background-color: #eeeeee;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 0.75em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100% !important;
+}
 input[type=submit] {
     padding: 10px 15px;
     font-size: 1em;
