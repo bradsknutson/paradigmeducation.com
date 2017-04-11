@@ -914,3 +914,10 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+/*--------------------------------------------------------------
+## Alternating content template
+--------------------------------------------------------------*/
+.row-hidden .alternating-content h3 {
+    margin-top: 0px;
+}
