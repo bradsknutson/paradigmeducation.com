@@ -674,7 +674,7 @@ body[class*='page-template-page-sub-page'] .hero .container p {
     margin: 0;
     padding: 0;
 }
-.alternating-content-images .alternating-content div {
+.alternating-content-images .alternating-content > div {
     margin: 0;
     padding: 0 40px;
 }
@@ -708,7 +708,25 @@ body[class*='page-template-page-sub-page'] .hero .container p {
 .page-id-170.page-template-page-sub-page-2 .product-information-sub-top-slice { /* Computer Tech Page */
     background-color: #fef7f5;
 }
-
+.row-hidden {
+    height: 0;
+    padding: 0 !important;
+    overflow: hidden;
+    -webkit-transition: 0.3s all ease-out;
+    -moz-transition: 0.3s all ease-out;
+    -ms-transition: 0.3s all ease-out;
+    
+}
+.button-slide {
+    cursor: pointer;
+    position: relative;
+}
+.button-slide i {
+    position: absolute;
+    left: 10px;
+    top: 11px;
+    opacity: 0.75;
+}
 
 /* 
  * 	Alternating Content + Gradients

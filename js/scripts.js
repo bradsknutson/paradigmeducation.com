@@ -146,7 +146,32 @@
              $('.page-template-page-shop-online .page-content form').submit();
          }
      });
-
-});
+    
+    $(document).on('click', '.button-slide', function(e) {
+        $(this).addClass('button-collapse');
+        $(this).find('i').removeClass('fa-plus').addClass('fa-minus');
+        $slideId = $(this).attr('id');
+        
+        $elem = $('.row-hidden .slide-content-' + $slideId);
+        $slideHeight = $elem.height();
+        
+        $slideContainer = $elem.parent().parent().parent();
+        $slideContainer.css('height',$slideHeight);
+        
+        e.preventDefault();        
+    });
+    
+    $(document).on('click', '.button-collapse', function(e) {
+        $(this).removeClass('button-collapse');
+        $(this).find('i').removeClass('fa-minus').addClass('fa-plus');
+        $slideId = $(this).attr('id');
+        
+        $elem = $('.row-hidden .slide-content-' + $slideId);
+        
+        $slideContainer = $elem.parent().parent().parent();
+        $slideContainer.css('height','0');
+        
+        e.preventDefault();        
+    });
     
 })( jQuery );
