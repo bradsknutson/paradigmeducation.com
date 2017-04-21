@@ -42,7 +42,10 @@
                         for( $ii = 0; $ii < $button_count; $ii++ ) {
 
                             if( $buttons[$ii]['target'] == 'slide' ) {
-                                $button_html .= '<a class="button button-slide" id="'. $ii .'">
+
+                                // Create unique ids for collapsable button elements -- currently not selecting height element
+                                // $button_html .= '<a class="button button-slide" id="'. $i .'-'. $ii .'">
+                                $button_html .= '<a class="button button-slide" id="'. $ii .'">                                    
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                     <div style="color:'. $buttons[$ii]['button_color'] .';border:2px solid '. $buttons[$ii]['button_color'] .';">'. $buttons[$ii]['button_text'] .'</div>
                                 </a>';

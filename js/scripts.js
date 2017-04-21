@@ -157,7 +157,6 @@
         
         $slideContainer = $elem.parent().parent().parent();
         $slideContainer.css('height',$slideHeight);
-        
         e.preventDefault();        
     });
     
