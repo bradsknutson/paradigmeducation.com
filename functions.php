@@ -111,20 +111,20 @@ add_action( 'widgets_init', 'jist_widgets_init' );
 
 
 
-// Creating the widget 
+// Creating the widget
 class wpb_widget extends WP_Widget {
 
     function __construct() {
         parent::__construct(
-            
+
             // Base ID of your widget
-            'jist_popular_posts_widget', 
+            'jist_popular_posts_widget',
 
             // Widget name will appear in UI
-            __('Popular Posts', 'jist_popular_posts_widget_domain'), 
+            __('Popular Posts', 'jist_popular_posts_widget_domain'),
 
             // Widget description
-            array( 'description' => __( 'Display the most recent 3 posts with meta data.', 'jist_popular_posts_widget_domain' ), ) 
+            array( 'description' => __( 'Display the most recent 3 posts with meta data.', 'jist_popular_posts_widget_domain' ), )
         );
     }
 
@@ -140,7 +140,7 @@ class wpb_widget extends WP_Widget {
         if ( ! empty( $title ) ) {
             echo $args['before_title'] . $title . $args['after_title'];
         }
-        
+
         $post_args = array(
             'numberposts' => $num_posts,
             'orderby' => 'post_date',
@@ -148,13 +148,13 @@ class wpb_widget extends WP_Widget {
             'post_type' => 'post',
             'post_status' => 'publish',
         );
-        
+
         $recent_posts = wp_get_recent_posts( $post_args, ARRAY_A );
-        
+
         function postTruncate($string, $your_desired_width) {
-            
+
             $string = strip_tags( $string );
-            
+
             $parts = preg_split('/([\s\n\r]+)/', $string, null, PREG_SPLIT_DELIM_CAPTURE);
             $parts_count = count($parts);
 
@@ -166,19 +166,19 @@ class wpb_widget extends WP_Widget {
             }
 
             $return = implode(array_slice($parts, 0, $last_part));
-            
+
             return trim($return);
-        }        
+        }
 
         // Display front end widget
         echo '<div class="popular-posts">';
         foreach( $recent_posts as $recent ){
-            
+
             $category = get_the_category( $recent['ID'] );
             $post_date = explode( ' ', $recent['post_date'] );
             $date_parts = explode( '-', $post_date[0] );
             $formatted_date = ltrim( $date_parts[1], '0' ) .'.'. ltrim( $date_parts[2], '0' ) .'.'. $date_parts[0];
-            
+
             echo '<div class="popular-post-sidebar">
                     <p class="popular-post-meta">'. $category[0]->name .' '. $formatted_date .'</p>
                     <h4><a href="'. get_permalink( $recent['ID'] ) .'">'. $recent['post_title'] .'</a></h4>
@@ -186,11 +186,11 @@ class wpb_widget extends WP_Widget {
                 </div>';
         }
         echo '</div>';
-        
+
         echo $args['after_widget'];
     }
 
-    // Widget Backend 
+    // Widget Backend
     public function form( $instance ) {
 
         if ( isset( $instance[ 'title' ] ) ) {
@@ -209,12 +209,12 @@ class wpb_widget extends WP_Widget {
         // Widget admin form
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /> 
-            <label for="<?php echo $this->get_field_id( 'num_posts' ); ?>"><?php _e( 'Number of Posts to display:' ); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+            <label for="<?php echo $this->get_field_id( 'num_posts' ); ?>"><?php _e( 'Number of Posts to display:' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'num_posts' ); ?>" name="<?php echo $this->get_field_name( 'num_posts' ); ?>" type="text" value="<?php echo esc_attr( $num_posts ); ?>" />
         </p>
-        <?php 
+        <?php
     }
 
     // Updating widget replacing old instances with new
@@ -226,7 +226,7 @@ class wpb_widget extends WP_Widget {
 
         return $instance;
     }
-    
+
 } // Class wpb_widget ends here
 
 // Register and load the widget
@@ -249,6 +249,7 @@ function jist_scripts() {
 	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20151215', true );
 	wp_enqueue_script( 'jist-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
+
 	wp_enqueue_script( 'jist-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 	wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
 
@@ -258,6 +259,14 @@ function jist_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'jist_scripts' );
 
+/**
+* Lightbox imports -- used on second image: http://paradigmeducation.com/pharmacology-for-technicians/
+**/
+function lightbox_scripts() {
+	wp_enqueue_style( 'lightbox', get_template_directory_uri() . '/css/lightbox.css' );
+	wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/js/lightbox.js', array(), '20151215', true );
+}
+add_action( 'wp_enqueue_scripts', 'lightbox_scripts' );
 
 function custom_excerpt_length( $length ) {
 	return 20;
@@ -294,7 +303,7 @@ require get_template_directory() . '/inc/jetpack.php';
 
 /**
  * Remove Pages from Search
- 
+
 function SearchFilter($query) {
     if ($query->is_search) {
         $query->set('post_type', 'post');
@@ -312,13 +321,13 @@ add_filter('the_content','user_content_replace', 99);
 // Custom Posts Navigation Text
 add_filter( 'tc_list_nav_next_text' , 'my_list_nav_buttons_text');
 add_filter( 'tc_list_nav_previous_text' , 'my_list_nav_buttons_text');
- 
+
 function my_list_nav_buttons_text() {
     switch ( current_filter() ) {
         case 'tc_list_nav_next_text':
             $text = '<span class="meta-nav">&larr;</span> More content';
             break;
-        
+
         case 'tc_list_nav_previous_text':
             $text = 'More content <span class="meta-nav">&rarr;</span>';
             break;
@@ -340,10 +349,10 @@ function my_list_nav_buttons_text() {
 function cf_search_join( $join ) {
     global $wpdb;
 
-    if ( is_search() ) {    
+    if ( is_search() ) {
         $join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
     }
-    
+
     return $join;
 }
 add_filter('posts_join', 'cf_search_join' );
@@ -360,7 +369,7 @@ add_filter('posts_join', 'cf_search_join' );
  */
 function cf_search_where( $where ) {
     global $pagenow, $wpdb;
-   
+
     if ( is_search() ) {
         $where = preg_replace(
             "/\(\s*".$wpdb->posts.".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
@@ -405,7 +414,7 @@ function pinterest_image() {
 add_action(‘template_redirect’, ‘bwp_template_redirect’);
 function bwp_template_redirect() {
     if (is_author()) {
-        wp_redirect( home_url() ); 
+        wp_redirect( home_url() );
         exit;
     }
 }

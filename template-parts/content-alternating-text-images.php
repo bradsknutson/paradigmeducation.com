@@ -21,6 +21,8 @@
 
                 for( $i = 0; $i < $count; $i++ ) {
 
+                    $image_count++;
+
                     $content = $rows[$i]['content'];
                     $image = $rows[$i]['image'];
 
@@ -30,9 +32,21 @@
                     $button_html = '';
                     $slide_down_content = '';
 
+
+
                     $img = '';
+
+
+
                     if( !empty($image) ) {
-                        $img = '<img src="'. $rows[$i]['image'] .'" />';
+                        /* custom code to create lightbox
+                          * Lightbox scripts used only on second image: http://paradigmeducation.com/pharmacology-for-technicians/
+                        */
+                        if ( $i == 1 ) {
+                          $img = '<a href="'. $rows[$i]['image'] .'" data-lightbox="image-'. $i .'"><img src="'. $rows[$i]['image'] .'" /></a>';
+                        } else {
+                          $img = '<img src="'. $rows[$i]['image'] .'" />';
+                        }
                     }
 
                     if($buttons['0']['button_text'] == '') {
@@ -64,11 +78,13 @@
 
                     $content = $content . $button_html;
 
+
+
                     if( $i % 2 == 0 ) {
 
                         echo '<div class="row row-even">
                                 <div class="col-md-6 alternating-content float-swap"><div>'. $content .'</div></div>
-                                <div class="col-md-6 alternating-image float-swap">'. $img .'</div>
+                                <div class="col-md-6 alternating-image float-swap" id="image-'. $i .'">'. $img .'</div>
                             </div>
                             <div class="row row-hidden row-even">
                                 <div class="col-md-6 alternating-content float-swap"><div>'. $slide_down_content .'</div></div>
